@@ -1,5 +1,6 @@
 import styled from "styled-components";
 
+
 export const BoxContainer = styled.div `
 width: 100;
 display: flex;
@@ -27,7 +28,7 @@ text-align: center;
 &:hover{
     font-size: 15px;
     font-weight: 900;
-    color: rgb(97,28,94);
+    color: #00796b;
 }
 
 transition: all 200ms ease-in-out;
@@ -53,7 +54,7 @@ text-decoration: none;
 &:hover{
 
     font-weight: 900;
-    color: rgb(97,28,34);
+    color: #00796b;
     transition: all 200ms ease-in-out;
 }
 `;
@@ -99,8 +100,8 @@ cursor: pointer;
 transition: all, 240ms ease-in-out;
 margin: 0;
 margin-top: 10px;
-background: rgb(97,28,94);
-background: linear-gradient(4deg, rgba(97,28,94,1) 0%, rgba(97,28,94,1) 0%);
+background: #00796b;
+background: linear-gradient(4deg, #00796b 0%, #00796b 0%);
 &:hover{
 
     padding: 15px;

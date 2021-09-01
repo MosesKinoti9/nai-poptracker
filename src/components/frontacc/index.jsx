@@ -41,8 +41,8 @@ border-radius: 50%;
 transform: rotate(60deg);
 top: -290px;
 left: -70px;
-background: rgb(97,28,94);
-background: linear-gradient(4deg, rgba(97,28,94,1) 0%, rgba(97,28,94,1) 0%);
+background: #00796b;
+background: linear-gradient(4deg, #00796b 0%, #00796b 0%);
 
 `;
 
@@ -137,12 +137,12 @@ function FrontAcc(props){
             <BackDrop initial={false} animate={isExpanded ? "expanded" : "collapsed"} variants={backdropVariants} transition={expandingTransition}/>
             {active === "signin" && (<HeaderContainer> 
                 <HeaderText>Welcome</HeaderText>
-                <HeaderText>Back</HeaderText>
+                <HeaderText></HeaderText>
                 <SmallText>Sign in to continue</SmallText>
             </HeaderContainer>)}
             {active === "signup" && (<HeaderContainer> 
-                <HeaderText>Create</HeaderText>
-                <HeaderText>New Account</HeaderText>
+                <HeaderText>Welcome</HeaderText>
+                <HeaderText></HeaderText>
                 <SmallText>Sign up to continue</SmallText>
             </HeaderContainer>)}
         </TopContainer>

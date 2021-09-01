@@ -1,24 +1,79 @@
 import React from "react";
-import { BoldLink, BoxContainer, FormContainer, Input, SubmitButton,MuteLink } from "./common";
-import { Marginer } from "../marginer";
-import { FrontContext } from "./frocontext";
-import { useContext} from "react";
+import { Component } from "react";
+import { Redirect } from 'react-router-dom'
+import { connect } from 'react-redux'
+import { signUp } from '../../store/actions/authActions'
 
+class SignUpForm extends Component{
+    state={
+        firstName: '',
+        lastName: '',
+        email: '',
+        password: '',
+        confirm: ''
 
-export function SignUpForm(props){
+    }
+    handleChange = (e) => {
+        this.setState({
+            [e.target.id]: e.target.value
+        })
+    }
+    handleSubmit = (e) => {
+        e.preventDefault();
+       this.props.signUp(this.state);
+    }
 
-    const {switchToSignin} = useContext(FrontContext);
-    return <BoxContainer>
-        <FormContainer>
-            <Input type="text" placeholder="Username"/>
-            <Input type="email" placeholder="Email"/>
-            <Input type="password" placeholder="Password"/>
-            <Input type="password" placeholder="Confirm Password"/>
-        </FormContainer>
-            <Marginer direction="vertical" margin={10}/>
-            <SubmitButton type="submit">Register</SubmitButton>
-            <Marginer direction="vertical" margin="1em"/>
-            <MuteLink>Already have an account? <BoldLink href="#" onClick={switchToSignin}>Signin</BoldLink></MuteLink>
-        </BoxContainer>
+    render() {
+        const { auth } = this.props;
+        if (auth.uid) return <Redirect to='/' />
+
+   
+    return (
+        <div className="container" >
+            <form onSubmit={this.handleSubmit} className="white" style={{padding: 20, marginTop: 40}}>
+                <h5 className="grey-text text-darken-3">Sign Up</h5>
+                <br></br>
+                <div className="input-field">
+                    <label htmlFor="firstName">First Name</label>
+                    <input type="text" id="firstName" onChange={this.handleChange}/>
+                </div>
+                <div className="input-field">
+                    <label htmlFor="firstName">Last Name</label>
+                    <input type="text" id="lastName" onChange={this.handleChange}/>
+                </div>
+                <div className="input-field">
+                    <label htmlFor="email">Email</label>
+                    <input type="email" id="email" onChange={this.handleChange}/>
+                </div>
+                <div className="input-field">
+                    <label htmlFor="password">Password</label>
+                    <input type="password" id="password" onChange={this.handleChange}/>
+                </div>
+                <div className="input-field">
+                    <label htmlFor="password">Confirm Password</label>
+                    <input type="password" id="confirm" onChange={this.handleChange}/>
+                </div>
+                <div className="input-field">
+                    <button className="btn pink lighten-1 z-depth-0">Register</button>
+                </div>
+            </form>
+        </div>
+    )
+
+    }
 };
+
+const mapStateToProps = (state) => {
+    return {
+        auth : state.firebase.auth
+    }
+}
+
+const mapDispatchToProps = (dispatch) => {
+    return{
+    signUp: (newUser) => dispatch(signUp(newUser))
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(SignUpForm);
 

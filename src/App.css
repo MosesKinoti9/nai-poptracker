@@ -37,12 +37,9 @@
   }
 }
 
-#particles-js {
-  background: radial-gradient(circle, rgba(193, 196, 209, 1) 0%,
-  rgba(3, 3, 29, 1) 100%);
-  height: 100vh;
-  
-}
+
+
+
 
 #form{
   z-index: 10;
@@ -160,29 +157,21 @@
 }
 
 
-body{
-
-  background: linear-gradient(312deg, #611c5e, #9d4d9a, #431b42, #742c72);
-  background-size: 800% 800%;
-
-  -webkit-animation: LandingAnimation 22s ease infinite;
-  -moz-animation: LandingAnimation 22s ease infinite;
-  animation: LandingAnimation 22s ease infinite;
+body {
+  background: linear-gradient(-45deg, #e0f2f1, #b2dfdb, #80cbc4, #4bb6ac);
+  background-size: 400% 400%;
+  animation: gradient 15s ease infinite;
 }
 
-@-webkit-keyframes LandingAnimation {
-  0%{background-position:76% 0%}
-  50%{background-position:25% 100%}
-  100%{background-position:76% 0%}
-}
-@-moz-keyframes LandingAnimation {
-  0%{background-position:76% 0%}
-  50%{background-position:25% 100%}
-  100%{background-position:76% 0%}
-}
-@keyframes LandingAnimation {
-  0%{background-position:76% 0%}
-  50%{background-position:25% 100%}
-  100%{background-position:76% 0%}
+@keyframes gradient {
+  0% {
+      background-position: 0% 50%;
+  }
+  50% {
+      background-position: 100% 50%;
+  }
+  100% {
+      background-position: 0% 50%;
+  }
 }
 
